@@ -35,6 +35,7 @@ var TicTacToe = (function() {
 	}
 
 	function checkWinner() {
+		var winner = false;
 		for (var i=0;i<TicTacToe.config.boardSize;i++) {
 			for (var b=0;b<TicTacToe.config.boardSize;b++) {
 				if(board[i][b] == TicTacToe.config.currentPlayer) {
@@ -56,14 +57,18 @@ var TicTacToe = (function() {
 						downLeft: downLeft
 					};
 
-					return checkWinnerPath(winningCombo, winnerPaths);
+					if(checkWinnerPath(winningCombo, winnerPaths)){
+						winner = true;
+					}
 				}
 			}
 		}
+		return winner;
 	}
 
 	function checkWinnerPath(winningCombo, winnerPaths) {
 		for (var path in winnerPaths) {
+			console.log(winnerPaths[path]);
 			if (winningCombo == winnerPaths[path]){
 				return true;
 			}
@@ -129,5 +134,5 @@ var TicTacToe = (function() {
 		cell.addEventListener("click", playerMove);
 	}
 })();
-
+TicTacToe.config.boardSize = 10;
 TicTacToe.start();
