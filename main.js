@@ -68,7 +68,6 @@ var TicTacToe = (function() {
 
 	function checkWinnerPath(winningCombo, winnerPaths) {
 		for (var path in winnerPaths) {
-			console.log(winnerPaths[path]);
 			if (winningCombo == winnerPaths[path]){
 				return true;
 			}
@@ -134,5 +133,5 @@ var TicTacToe = (function() {
 		cell.addEventListener("click", playerMove);
 	}
 })();
-TicTacToe.config.boardSize = 10;
+
 TicTacToe.start();
